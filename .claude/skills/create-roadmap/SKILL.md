@@ -1,6 +1,6 @@
 ---
 name: create-roadmap
-description: Interviews the user about a field they want to study — what the field is, why they want to learn it (their goal or direction), and their current knowledge level — then co-creates a new <field-directory>/ROADMAP.md from templates/ROADMAP_TEMPLATE.md, wires up cross-references to existing roadmaps, updates the README field list, and commits/pushes. Use this whenever the user wants to start learning a new field in this repo — phrases like "create-roadmap", "/create-roadmap", "新しい分野を学びたい", "○○のロードマップを作って", "○○を勉強し始めたい" — and also when the repo has no field directories yet and the user wants to begin studying anything.
+description: Interviews the user about a field they want to study — what the field is, why they want to learn it (their goal or direction), and their current knowledge level — then co-creates a new <field-directory>/ROADMAP.md from templates/ROADMAP_TEMPLATE.md, wires up cross-references to existing roadmaps, updates the README field list, and commits/pushes. Use this whenever the user wants to start learning a new field in this repo — phrases like "create-roadmap", "/create-roadmap", "新しい分野を学びたい", "○○のロードマップを作って", "○○を勉強し始めたい" — and also when the repo has no field directories yet and the user wants to begin studying anything. Also use it when the user brings a roadmap draft made elsewhere (ChatGPT や別のチャット AI で作った案、自分で書いた案) and wants it taken into this repo — phrases like "ChatGPTで作ったロードマップを取り込んで", "この案をこのリポジトリの形式にして", or a session that opens by pasting a roadmap draft.
 ---
 
 # ロードマップ新規作成（create-roadmap）
@@ -20,7 +20,23 @@ description: Interviews the user about a field they want to study — what the f
 
 ## 手順
 
-### 1. ヒアリング
+ロードマップの作り方には 2 つの入口がある。**手順 0 で入口を見極め、A なら手順 1、
+B なら手順 1' に進む。手順 2 以降は共通。**
+
+### 0. 入口の確認
+
+ユーザーが外部で作ったロードマップ案（ChatGPT などの別のチャット AI に作らせたもの、
+自分で書いたものを含む）を持っているかを確認する。
+最初のメッセージで案そのものが貼り付けられている場合は、聞くまでもなく B とみなす。
+
+- **A. 持ち込み案なし** → 手順 1（ヒアリング）へ。
+- **B. 持ち込み案あり** → 手順 1'（持ち込み案の取り込み）へ。
+
+分野を言われただけでどちらとも判断がつかないときは、
+「外部で作った案があれば貼ってください。なければヒアリングから始めます」と一言確認する。
+案の有無を聞くのはこの 1 回だけでよく、以降は聞き直さない。
+
+### 1. ヒアリング（A の場合）
 
 以下を対話で確認する。**一度に全部質問せず**、会話の流れに沿って 1〜2 項目ずつ聞く。
 ユーザーが最初のメッセージで既に答えている項目は聞き直さない。
@@ -39,9 +55,51 @@ description: Interviews the user about a field they want to study — what the f
    机に向かえるか。スキマ時間中心なら、長い手計算・証明は「宿題」として後日に回す運用
    （`CLAUDE.md` の宿題の節）が効くので、その旨をロードマップの学習目標の下に一言添えてよい。
 
+### 1'. 持ち込み案の取り込み（B の場合）
+
+持ち込み案は**章立てドラフトの素材**として扱う。**そのまま整形して採用しない。**
+案は本リポジトリの運用（宿題・sidenotes・相互参照・到達目標の粒度）も既存分野の進捗も
+知らずに書かれているため、必ず次の差分ヒアリングと適合チェックを通す。
+
+#### a. 差分ヒアリング
+
+手順 1 の 4 項目のうち、**案から読み取れないものだけ**を聞く。案に書いてあることは聞き直さない。
+
+- **学習スタイル・使える時間**（手順 1 の 4.）— 案にはまず書かれていない。宿題運用の要否を決める。
+- **案が前提としている知識レベルが実態と合っているか**（手順 1 の 3.）—
+  「この案は◯◯を既知として①を△△から始めていますが、その前提で合っていますか」と
+  確認の形で聞く。ズレていれば①を補強の章にする。
+- **動機・目指す方向性と章立ての整合**（手順 1 の 2.）— 案の学習目標が曖昧なら聞いて具体化する。
+  ここが「学習目標」欄の書きぶりを決めるので、案の文言を写して済ませない。
+
+#### b. 適合チェック
+
+次の観点で案を点検し、外れている箇所は直す。直した点は手順 2 で
+「どこを・なぜ変えたか」を添えて提示し、合意を取る（黙って書き換えない）。
+
+- **章の粒度** — 章数 5〜12、1 章が 1〜数回のセッションで区切りがつくか。
+  細かすぎれば統合、粗すぎれば分割を提案する。
+- **「学ぶ内容」** — 解説本文が混ざっていればトピックの箇条書きに削る
+  （`ROADMAP.md` は教科書ではない。「注意」の節を参照）。
+- **到達目標** — 「理解する」「身につける」のような達成を判定できない書き方になっていれば、
+  「〜を説明できる」「〜を計算できる」に直す。
+- **数式記法** — 外部の AI の出力は `$$` 区切り・表のセル内数式・全角文字に直接隣接した `$x$`
+  など、`CLAUDE.md` の「Markdown に数式を書くときのルール」に反していることが多い。
+  ファイルに書く前に全数式をこのルールに沿って書き直す。案の記法をそのまま貼らない。
+- **既存分野との重なり** — 外部で作った案は既存分野の `ROADMAP.md` を読めないため、
+  **ユーザーが既に学習済みの内容が章として立っていることがある**。手順 4 で必ず突き合わせる。
+  B で最も落ちやすい箇所なので、他の項目が問題なくてもここは省略しない。
+
+#### c. 手直しで収まらない場合
+
+案が 1 つのロードマップとして成立する粒度になっていない、到達目標が立てられない、
+ユーザーの現状と前提が大きく食い違う、といった場合は、手直しを重ねるより
+その旨を率直に伝えて手順 1 のヒアリングに切り替えてよい。案は参考資料として使う。
+
 ### 2. 章立てドラフトの提案
 
 本文を書き始める前に、まず**骨格だけ**を提示して合意を取る。
+B の場合は、手順 1' で手直しした案をこのドラフトとして提示する。
 
 - 全体ロードマップ（①→②→… の流れ図）と、各章の一言説明を会話で提示する。
 - 章の数は 5〜12 程度を目安にする。1 章が 1〜数回のセッションで区切りがつく粒度にする。
@@ -57,6 +115,7 @@ description: Interviews the user about a field they want to study — what the f
   - 「学習目標」はヒアリング 2.（動機・方向性）を反映し、「最終的に何ができるようになるか」を
     具体的な箇条書きにする。
   - 各章の「学ぶ内容」は、ヒアリング 3.（現在の知識レベル）を反映して深さを調整する。
+    B の場合、この 2 点は手順 1'-a で確認した内容を使う。
     既に知っている内容は章として立てず、必要なら①を「補強」の章にする。
   - 進捗表は全章分の行を作り、理解度・完了日・メモは空欄で置く。
   - 学習メモの各欄は見出しだけ作り、「次回学ぶ内容」に最初のセッションで始めるべき項目を
@@ -70,6 +129,9 @@ description: Interviews the user about a field they want to study — what the f
   （書き方はテンプレートおよび既存ロードマップの冒頭の相互参照リストを参照）。
 - 参照先の章をユーザーが**既に学習済み**の場合は、`CLAUDE.md` の
   「分野をまたぐ相互参照の扱い」に従い、既存分野の進捗表のメモ欄への追記が必要かを確認する。
+- B（持ち込み案）の場合は、案が既存分野と重なる内容を独立した章として立てていないかを
+  ここで必ず確認する。案の作成者は既存分野の `ROADMAP.md` を読めていないため、
+  学習済みの内容がそのまま章になっていることがある（手順 1'-b）。
 
 ### 5. README の更新
 
