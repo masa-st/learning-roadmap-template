@@ -1,0 +1,9 @@
+{
+  // このリポジトリの Markdown は GitHub 表示を正としており、
+  // ディスプレイ数式を math フェンス（```math）で書いています。
+  // VS Code 標準プレビューは math フェンス非対応のため、この拡張が必要です。
+  // 詳細は ../VSCODE_SETUP.md を参照。
+  "recommendations": [
+    "shd101wyy.markdown-preview-enhanced"
+  ]
+}

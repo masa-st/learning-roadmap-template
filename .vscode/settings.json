@@ -1,0 +1,7 @@
+{
+  // Markdown Preview Enhanced のレンダラを MathJax にする。
+  // 既定値は KaTeX だが、GitHub も MathJax を使っているため、
+  // MathJax に合わせておくとプレビューと GitHub の表示差がなくなる。
+  // 選択肢: "KaTeX" | "MathJax" | "None"
+  "markdown-preview-enhanced.mathRenderingOption": "MathJax"
+}
