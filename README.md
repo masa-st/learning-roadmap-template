@@ -19,6 +19,10 @@ Private にした場合、Claude GitHub App 側でそのリポジトリへのア
 
 ## はじめ方
 
+**各手順の詳細は [`GETTING_STARTED.md`](./GETTING_STARTED.md) にあります。**
+テンプレートからの複製手順、見本ディレクトリの扱い、うまくいかないときの対処まで
+まとめてあるので、まずはそちらを読んでください。以下は流れの要約です。
+
 1. **このテンプレートから自分のリポジトリを作る** — **Use this template →
    Create a new repository**（Private 推奨）。
 2. **Claude から開けるようにする** — スマホの Claude アプリなら Claude GitHub App を
@@ -27,10 +31,6 @@ Private にした場合、Claude GitHub App 側でそのリポジトリへのア
    ヒアリングしながら `<分野ディレクトリ>/ROADMAP.md` を作ります。
 4. **学習して、記録して終える** — 「①の続きから」で再開し、「今日はここまで」や
    `/wrapup` で進捗の記録・commit・push まで自動で行われます。
-
-**各手順の詳細は [`GETTING_STARTED.md`](./GETTING_STARTED.md) にあります。**
-テンプレートからの複製手順、見本ディレクトリの扱い、うまくいかないときの対処まで
-まとめてあるので、まずはそちらを読んでください。
 
 ## 構成
 
