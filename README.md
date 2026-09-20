@@ -52,6 +52,8 @@ Private にした場合、Claude GitHub App 側でそのリポジトリへのア
     [`SIDE_NOTES_README_TEMPLATE.md`](./templates/SIDE_NOTES_README_TEMPLATE.md)・
     [`SIDE_NOTE_TEMPLATE.md`](./templates/SIDE_NOTE_TEMPLATE.md) — sidenotes の雛形
     （1 ファイル形式、1 ネタ 1 ファイル形式の索引、同形式の各ネタ）。
+  - [`LEARNING_LOG_TEMPLATE.md`](./templates/LEARNING_LOG_TEMPLATE.md) — 修了した章の学習メモを
+    `ROADMAP.md` から退避する `learning-log.md` の雛形。
   - [`NOTES_README_TEMPLATE.md`](./templates/NOTES_README_TEMPLATE.md) — ロードマップを持たない
     「notes 型」ディレクトリ（実務の相談ノートなど）の索引 README の雛形。
 - [`statistics-certificate-pre1/`](./statistics-certificate-pre1/ROADMAP.md) — 記入見本を兼ねた
