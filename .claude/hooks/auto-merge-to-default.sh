@@ -8,6 +8,15 @@
 # relative to other git-related Stop hooks (e.g. the uncommitted/unpushed
 # changes check) — it never assumes that hook already ran.
 
+# VS Code 拡張から起動されたセッションではこのフックを無効化する（任意の運用。
+# 詳細と外し方は VSCODE_SETUP.md「VS Code で開いたセッションの扱い」）。
+# スマホ/デスクトップ/web の Claude アプリやターミナル（CLAUDE_CODE_ENTRYPOINT が
+# claude-vscode 以外）では従来どおり有効。値は実測に基づく（将来アプリ更新で
+# 変わる可能性はあるが、その場合はこの条件を直すだけでよい）。
+if [[ "$CLAUDE_CODE_ENTRYPOINT" == "claude-vscode" ]]; then
+  exit 0
+fi
+
 input=$(cat)
 
 stop_hook_active=$(echo "$input" | jq -r '.stop_hook_active')

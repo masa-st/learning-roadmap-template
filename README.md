@@ -45,8 +45,15 @@ Private にした場合、Claude GitHub App 側でそのリポジトリへのア
 - [`MATH_RENDERING.md`](./MATH_RENDERING.md) — `CLAUDE.md` の「会話中に数式を書くときのルール」の
   各制約が、スマホの Claude アプリでの実測に基づいてどう決まったかの記録。ルールを疑うときや
   新しい表示崩れを見つけたときに参照・追記します。
-- [`templates/ROADMAP_TEMPLATE.md`](./templates/ROADMAP_TEMPLATE.md) — ロードマップの雛形。
-  `create-roadmap` スキルがこの構成でロードマップを生成します。手で書く場合の参考にもなります。
+- `templates/` — 各種の雛形。
+  - [`ROADMAP_TEMPLATE.md`](./templates/ROADMAP_TEMPLATE.md) — ロードマップの雛形。
+    `create-roadmap` スキルがこの構成でロードマップを生成します。手で書く場合の参考にもなります。
+  - [`SIDENOTES_TEMPLATE.md`](./templates/SIDENOTES_TEMPLATE.md)・
+    [`SIDE_NOTES_README_TEMPLATE.md`](./templates/SIDE_NOTES_README_TEMPLATE.md)・
+    [`SIDE_NOTE_TEMPLATE.md`](./templates/SIDE_NOTE_TEMPLATE.md) — sidenotes の雛形
+    （1 ファイル形式、1 ネタ 1 ファイル形式の索引、同形式の各ネタ）。
+  - [`NOTES_README_TEMPLATE.md`](./templates/NOTES_README_TEMPLATE.md) — ロードマップを持たない
+    「notes 型」ディレクトリ（実務の相談ノートなど）の索引 README の雛形。
 - [`statistics-certificate-pre1/`](./statistics-certificate-pre1/ROADMAP.md) — 記入見本を兼ねた
   実物のロードマップ（統計検定2級レベルの知識を前提に準1級合格を目指す）。
   そのまま使っても、削除して自分の分野に差し替えてもよい。
@@ -59,6 +66,9 @@ Private にした場合、Claude GitHub App 側でそのリポジトリへのア
   - `hooks/auto-merge-to-default.sh` — push 済みの作業ブランチをデフォルトブランチへ
     自動マージする Stop フック（このリポジトリの運用では PR を作りません。
     詳細は `CLAUDE.md` の「Git運用」）
+  - `hooks/vscode-focus-mode.sh` — VS Code から開いたセッションだけ「腰を据えた集中作業」
+    として進めさせる SessionStart フック。VS Code では上 2 つの Stop フックも無効になります
+    （任意の運用。前提と外し方は `VSCODE_SETUP.md`）
   - `settings.json` — 上記フックの登録と、commit・push の許可設定
 - [`MOBILE_SETUP.md`](./MOBILE_SETUP.md) — **スマホの Claude アプリから使う場合は先に
   読んでください。** Claude GitHub App の入れ方、セッションの始め方・終わり方、
@@ -83,6 +93,9 @@ Private にした場合、Claude GitHub App 側でそのリポジトリへのア
   分野のディレクトリ内の sidenotes（`SIDENOTES.md` または `side-notes/`）に記録されます。
 - **ロードマップは太らない** — 章を修了すると、その章の「理解できたこと」の詳細は同じ分野の
   `learning-log.md` に移され、`ROADMAP.md` には進行中の章のメモだけが残ります。
+- **カリキュラムを追わない置き場も作れる** — 実務で困ったことを相談して知見を溜めるような用途は、
+  `ROADMAP.md` を持たない「notes 型」ディレクトリにできます。分野だけに効かせたいルール
+  （用語の禁止語リストなど）は、その分野ディレクトリの `CLAUDE.md` に置けます。
 - **宿題の運用** — スキマ時間の学習では長い手計算・証明をその場でこなせないため、
   そうした課題は「宿題」としてメモに残し、後日紙とペンで取り組めます。
 - **Git 操作は意識しなくてよい** — セッション終了時の commit・push、デフォルトブランチへの

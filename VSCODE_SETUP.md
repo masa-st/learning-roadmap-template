@@ -71,6 +71,39 @@ KaTeX は MathJax より高速な代わりに対応していないコマンド�
   GitHub では有効ですが、Markdown Preview Enhanced ではインラインコード扱いになり、
   両対応にならないためです。
 
+## VS Code で開いたセッションの扱い（任意の運用）
+
+このテンプレートは、**「スマホの Claude アプリはスキマ時間、VS Code は座ってじっくり
+作業できるとき」** という使い分けを前提にした仕組みを同梱しています。VS Code の Claude Code
+拡張から開いたセッションだけ、次の 3 点が変わります。
+
+1. **集中作業モードの文脈が注入される** — SessionStart フック
+   `.claude/hooks/vscode-focus-mode.sh` が「このセッションは腰を据えた集中学習として進める」
+   という指示を Claude に渡します。スキマ時間前提の進め方（「概念だけ説明して、コードは後で」）を
+   やめ、演習やコードもその場で一緒に進めるようになります。宿題の仕組みは残りますが、
+   「スキマ時間だから」という理由での宿題化はしません。
+2. **未 push チェックが働かない** — Stop フック `check-uncommitted.sh` は VS Code では何もしません。
+   ファイルを自分でも編集しながら何度もセッションを止める使い方で、毎回止められないようにするためです。
+3. **デフォルトブランチへの自動マージが働かない** — Stop フック `auto-merge-to-default.sh` も
+   VS Code では何もしません。commit・push まではセッション終了時に通常どおり行われますが、
+   マージは自分で行う（または Claude に頼む）必要があります。Claude はセッション終了時に
+   その旨を一言添えるようになっています。
+
+判定はいずれも環境変数 `CLAUDE_CODE_ENTRYPOINT` が `claude-vscode` かどうかで行っています。
+ターミナルの Claude Code CLI、web、スマホアプリからのセッションは対象外で、従来どおり
+動きます。
+
+### この運用が合わない場合
+
+VS Code を主な作業環境にしていて、VS Code でも自動マージや未 push チェックを効かせたい場合は、
+次の 3 か所を揃えて外してください（1 つだけ外すと、片方だけ効く中途半端な状態になります）。
+
+- `.claude/settings.json` の `SessionStart` の項目を削除する
+- `.claude/hooks/check-uncommitted.sh` 冒頭の `CLAUDE_CODE_ENTRYPOINT` を見ている `if` ブロックを削除する
+- `.claude/hooks/auto-merge-to-default.sh` 冒頭の同じ `if` ブロックを削除する
+
+`vscode-focus-mode.sh` 自体は残しておいても、`settings.json` から外れていれば呼ばれません。
+
 ## この方針のトレードオフ
 
 拡張機能を入れた環境でしか VS Code 側の表示が揃わない、という環境依存の解決です。

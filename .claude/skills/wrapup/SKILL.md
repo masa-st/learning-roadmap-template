@@ -36,6 +36,9 @@ description: Runs this repo's end-of-session learning-log update — reviewing w
    - ロードマップ外の話題が出ていれば、同じ分野ディレクトリ内の sidenotes
      （`SIDENOTES.md` または `side-notes/`）も対象に加える。既存の形式に従って書き、
      まだ sidenotes がない分野なら形式をユーザーに確認してから作る。迷ったらユーザーに確認する。
+   - ロードマップを持たない notes 型ディレクトリ（`CLAUDE.md`「ロードマップを持たないディレクトリ」）で
+     作業していた場合は、`ROADMAP.md` の代わりに該当ノート（`notes/NN-slug.md` の追記または新規作成）と
+     索引 `README.md` が対象。sidenotes は作らない。
    - 扱った章が他分野と相互参照で結ばれていれば、その分野の `ROADMAP.md` も対象に加える。
      参照の向きは問わない（扱った章が参照している側でも、参照されている側でもよい）。
      更新してよいのは進捗表のメモ欄のみ。範囲は `CLAUDE.md`「分野をまたぐ相互参照の扱い」が正。
