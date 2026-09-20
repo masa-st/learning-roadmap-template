@@ -40,7 +40,11 @@ Private にした場合、Claude GitHub App 側でそのリポジトリへのア
 - [`CLAUDE.md`](./CLAUDE.md) — Claude 向けの運用ルール。セッション開始時にどの分野を学ぶか
   確認し、対象分野の `ROADMAP.md` の進捗を読んで再開地点を確認、終了時に同ファイルを更新して
   commit・push することを定めています。宿題の扱い、ロードマップ外の学習の記録先（sidenotes）、
-  分野をまたぐ相互参照、Markdown に数式を書くときのルールもここにあります。
+  修了した章のメモの退避先（`learning-log.md`）、分野をまたぐ相互参照、会話と Markdown それぞれで
+  数式を書くときのルールもここにあります。
+- [`MATH_RENDERING.md`](./MATH_RENDERING.md) — `CLAUDE.md` の「会話中に数式を書くときのルール」の
+  各制約が、スマホの Claude アプリでの実測に基づいてどう決まったかの記録。ルールを疑うときや
+  新しい表示崩れを見つけたときに参照・追記します。
 - [`templates/ROADMAP_TEMPLATE.md`](./templates/ROADMAP_TEMPLATE.md) — ロードマップの雛形。
   `create-roadmap` スキルがこの構成でロードマップを生成します。手で書く場合の参考にもなります。
 - [`statistics-certificate-pre1/`](./statistics-certificate-pre1/ROADMAP.md) — 記入見本を兼ねた
@@ -77,6 +81,8 @@ Private にした場合、Claude GitHub App 側でそのリポジトリへのア
   セッションをまたいで更新され続けます。
 - **脱線も記録される** — ロードマップの正統カリキュラムから外れた話題は、そのとき学習していた
   分野のディレクトリ内の sidenotes（`SIDENOTES.md` または `side-notes/`）に記録されます。
+- **ロードマップは太らない** — 章を修了すると、その章の「理解できたこと」の詳細は同じ分野の
+  `learning-log.md` に移され、`ROADMAP.md` には進行中の章のメモだけが残ります。
 - **宿題の運用** — スキマ時間の学習では長い手計算・証明をその場でこなせないため、
   そうした課題は「宿題」としてメモに残し、後日紙とペンで取り組めます。
 - **Git 操作は意識しなくてよい** — セッション終了時の commit・push、デフォルトブランチへの

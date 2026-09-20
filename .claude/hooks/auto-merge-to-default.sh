@@ -63,7 +63,7 @@ if ! git checkout --quiet -B "$default_branch" "origin/$default_branch" 2>/dev/n
   exit 0
 fi
 
-if ! git merge --quiet --no-edit "origin/$current_branch" 2>/dev/null; then
+if ! git merge --quiet --no-ff --no-edit "origin/$current_branch" 2>/dev/null; then
   git merge --abort 2>/dev/null
   git checkout --quiet "$current_branch" 2>/dev/null
   echo "Auto-merge of '$current_branch' into default branch '$default_branch' hit a conflict. Please resolve manually." >&2

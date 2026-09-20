@@ -30,6 +30,9 @@ description: Runs this repo's end-of-session learning-log update — reviewing w
 
 2. **対象ファイルを決める。**
    - 対象分野の `<分野ディレクトリ>/ROADMAP.md` は常に対象。
+   - このセッションで章を修了して完了日を記入するなら、同じ分野ディレクトリの `learning-log.md`
+     も対象に加える（修了章の「理解できたこと」の詳細を移す）。範囲は `CLAUDE.md`「修了した章の
+     学習メモのアーカイブ（learning-log）」が正。修了する章がなければ対象外。
    - ロードマップ外の話題が出ていれば、同じ分野ディレクトリ内の sidenotes
      （`SIDENOTES.md` または `side-notes/`）も対象に加える。既存の形式に従って書き、
      まだ sidenotes がない分野なら形式をユーザーに確認してから作る。迷ったらユーザーに確認する。
@@ -50,8 +53,9 @@ description: Runs this repo's end-of-session learning-log update — reviewing w
    - コミットメッセージは学習内容が分かる日本語で書く（例:
      `update roadmap: ②の学習進捗を反映`）。
    - 現在のブランチに push する。
-   - `CLAUDE.md` のルール通り、明示的な依頼がない限り、対象分野ディレクトリ内の `ROADMAP.md` と
-     sidenotes、および相互参照先分野の `ROADMAP.md` のメモ欄以外のファイルは変更しない。
+   - `CLAUDE.md` のルール通り、明示的な依頼がない限り、対象分野ディレクトリ内の `ROADMAP.md`・
+     `learning-log.md`・sidenotes、および相互参照先分野の `ROADMAP.md` のメモ欄以外のファイルは
+     変更しない。
    - git操作の一般原則（`git status` を先に確認する、force push や履歴破壊的な操作をしないなど）
      は通常の運用方針に従う。
    - **push まで終わったらセッション終了処理は完了。** デフォルトブランチへのマージは Stop
